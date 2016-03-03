@@ -1,26 +1,22 @@
 #Create histogram for Plot#1
 plot1 <- function() {
-  rowcount=2000
+ # rowcount=2000
   #Read data
-  data <- read.csv("household_power_consumption.txt", sep=";", header=TRUE, na.strings="?")
+  data = read.csv("household_power_consumption.txt",na.strings = "?")
 
+  
+  data2 = subset(data,Date=="1/2/2007" | Date=="2/2/2007")
+  
   #Set the png file name
   png(file = "plot1.png")
   
   #Create and define Histogram
-  myhist = hist(
-    data$Global_active_power, 
-    col="red", 
-    border="black", 
-    ylab="Frequency", 
-    xlab="Global Active Power (kilowats)", 
-    oma=c(5,5,5,5), 
-    main="Global Active Power"
-    )
-  
+  hist(as.numeric(as.character(data2$Global_active_power)), main="Global Active Power",col="red",
+       xlab="Global Active Power (kilowatts)")
+
   
   dev.off()
   #Return Histogram
-  return(data)
+  #return(data)
   
 }
