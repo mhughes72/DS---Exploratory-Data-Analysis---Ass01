@@ -5,10 +5,8 @@ plot3 <- function() {
   #Read data
   data = read.csv2("household_power_consumption.txt",na.strings = "?")
   
-  #Create a new data frame with limited data to just 3 weekdays
-  # Subset the two dates
+  #Create a new data frame for the 3 dates
   data2 = subset(data,Date=="1/2/2007" | Date=="2/2/2007")
-  # Create date-time vector
   dt = strptime(paste(data2$Date,data2$Time),format="%d/%m/%Y %H:%M:%S")
   
   #Set the png file name
